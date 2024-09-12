@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy to /var/www/html') {
             steps {
                 script {
-                    // Assuming Jenkins runs on the same EC2 instancelol
+                    // Assuming Jenkins runs on the same EC2 instance
                     sh 'sudo cp index.html /var/www/html/'
                 }
             }
