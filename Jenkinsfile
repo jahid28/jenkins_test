@@ -10,6 +10,8 @@ pipeline {
             steps {
                 echo 'Cloning from github...'
             }
+        }
+        stage('ActualCloning') {
             steps {
                 git 'https://github.com/jahid28/jenkins_test.git'
             }
