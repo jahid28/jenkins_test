@@ -9,7 +9,28 @@ pipeline {
         stage('Cloning') {
             steps {
                 echo 'Cloning from github...'
-                git branch: 'main', url: 'https://github.com/jahid28/jenkins_test.git'
+                git branch: 'main', url: 'https://github.com/jahid28/portfolio.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing npm dependencies...'
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                echo 'Running tests...'
+                sh 'npm test'
+            }
+        }
+
+        stage('Build App') {
+            steps {
+                echo 'Building the application...'
+                sh 'npm run build'
             }
         }
 
@@ -17,7 +38,7 @@ pipeline {
             steps {
                 script {
                     // Assuming Jenkins runs on the same EC2 instance
-                    sh 'sudo cp index.html /var/www/html/'
+                    sh 'sudo cp -r build/* /var/www/html/'
                 }
             }
         }
