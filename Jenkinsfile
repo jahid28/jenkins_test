@@ -6,18 +6,12 @@ pipeline {
     agent any  // Runs the pipeline on any available agent
 
     stages {
-        stage('Build') {
+        stage('Cloning') {
             steps {
-                echo 'Building the application...'
+                echo 'Cloning from github...'
             }
-        }
-
-        stage('Test') {
-		    environment {
-				myname = 'jahid'
-		    }
             steps {
-                echo "Running tests & name is ${myname}"
+                git 'https://github.com/jahid28/jenkins_test.git'
             }
         }
 
@@ -28,7 +22,7 @@ pipeline {
             echo 'slack noti'
             slackSend channel: '#pls',
             color: COLOR_MAP[currentBuild.currentResult],
-            message: "*${currentBuild.currentResult}:* \n Job = ${env.JOB_NAME} \n Build no. = ${env.BUILD_NUMBER} \n Github Repo = ${env.GIT_URL} \n Branch = ${env.BRANCH_NAME} \n Commit = ${env.GIT_COMMIT} \n Build URL = ${env.BUILD_URL} \n Github push by = ${env.GIT_COMMITTER_NAME} \n Github push email = ${env.GIT_COMMITTER_EMAIL} \n Github push message = ${env.GIT_COMMIT_MESSAGE} \n Github push time = ${env.GIT_COMMIT_TIMESTAMP} \n Done!!"
+            message: "*${currentBuild.currentResult}:* \n Job = ${env.JOB_NAME} \n Build no. = ${env.BUILD_NUMBER} \n Github Repo = ${env.GIT_URL} \n Checking of new push is done!!"
         }
         success {
             echo 'Pipeline completed successfully.'
