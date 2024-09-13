@@ -52,7 +52,7 @@ pipeline {
             echo 'slack noti'
             slackSend channel: '#pls',
             color: COLOR_MAP[currentBuild.currentResult],
-            message: "*${currentBuild.currentResult}:* \n Job = ${env.JOB_NAME} \n Build no. = ${env.BUILD_NUMBER} \n Github Repo = ${env.GIT_URL} \n Checking of new push is done!!"
+            message: "*${currentBuild.currentResult}:* \n Job = ${env.JOB_NAME} \n Build no. = ${env.BUILD_NUMBER} \n Github Repo = ${env.GIT_URL} \n React check is done!!"
         }
         success {
             echo 'Pipeline completed successfully.'
