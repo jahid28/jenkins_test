@@ -29,7 +29,7 @@ pipeline {
 
         stage('Build App') {
             steps {
-                echo 'Building the application...'
+                echo 'Building the application...(pls run this time)'
                 sh 'npm run build'
             }
         }
